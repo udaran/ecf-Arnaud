@@ -1,0 +1,17 @@
+App\Entity\Hotel:
+  hotel_1:
+    name: Hotel de la Gare
+  hotel_2:
+    name: Hotel des Voyageurs
+  hotel_3:
+    name: Hotel du Lion d'or
+
+App\Entity\Client:
+  client{1..10}:
+    name: <name()>
+    title: <randomElement(['Ms', 'Mr'])>
+    phone_number: <phoneNumber()>
+
+App\Entity\Room:
+  room_1:
+

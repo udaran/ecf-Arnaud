@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration index{% endblock %}
+
+{% block body %}
+    <h1>Registration index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Start_date</th>
+                <th>End_date</th>
+                <th>ClientId</th>
+                <th>Occupants</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registration in registrations %}
+            <tr>
+                <td>{{ registration.id }}</td>
+                <td>{{ registration.startDate ? registration.startDate|date('Y-m-d') : '' }}</td>
+                <td>{{ registration.endDate ? registration.endDate|date('Y-m-d') : '' }}</td>
+                <td>{{ registration.clientId }}</td>
+                <td>{{ registration.occupants }}</td>
+                <td>
+                    <a href="{{ path('registration_show', {'id': registration.id}) }}">show</a>
+                    <a href="{{ path('registration_edit', {'id': registration.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('registration_new') }}">Create new</a>
+{% endblock %}

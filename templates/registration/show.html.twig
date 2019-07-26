@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <h1>Registration</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ registration.id }}</td>
+            </tr>
+            <tr>
+                <th>Start_date</th>
+                <td>{{ registration.startDate ? registration.startDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End_date</th>
+                <td>{{ registration.endDate ? registration.endDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ClientId</th>
+                <td>{{ registration.clientId }}</td>
+            </tr>
+            <tr>
+                <th>Occupants</th>
+                <td>{{ registration.occupants }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('registration_index') }}">back to list</a>
+
+    <a href="{{ path('registration_edit', {'id': registration.id}) }}">edit</a>
+
+    {{ include('registration/_delete_form.html.twig') }}
+{% endblock %}
